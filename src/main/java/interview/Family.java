@@ -39,25 +39,19 @@ public class Family
 	
 	public void addMember(Person member)
 	{
-		System.out.println("Family.addMember() invoked");
 		if(!members.contains(member))
 		{
 			members.add(member);
-			System.out.println("Family.addMember(): added " + member.getFirstName() + " " + member.getLastName());
 			member.setFamily(this);
-			System.out.println("Family.addMember(): member.setFamily() returned");
 		}
 	}
 	
 	public void removeMember(Person member)
 	{
-		System.out.println("Family.removeMember() invoked");
 		if(members.contains(member))
 		{
 			members.remove(member);
-			System.out.println("Family.removeMember(): removed " + member.getFirstName() + " " + member.getLastName());
 			member.setFamily(null);
-			System.out.println("Family.removeMember(): member.setFamily() returned");
 		}
 	}
 }

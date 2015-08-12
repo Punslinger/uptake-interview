@@ -49,7 +49,7 @@ class PersonOp
 }
 
 @RestController
-@RequestMapping("/families/{name}")
+@RequestMapping("/family/{name}")
 class FamilyRestController
 {
 	private final FamilyRepository familyRepository;
@@ -74,6 +74,7 @@ class FamilyRestController
 					System.out.println("Removed " + p.getFirstName() + " " + p.getLastName() + " from family " + family.getName());
 				}
 			}
+			familyRepository.save(family);
 			HttpHeaders headers = new HttpHeaders();
 			//headers.setLocation(ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(family.getId()).toUri());
 			return new ResponseEntity<>(null, headers, HttpStatus.OK);
@@ -85,26 +86,19 @@ class FamilyRestController
 	Collection<Person> getFamilyMembers(@PathVariable String name)
 	{
 		System.out.println("Attempting to display family " + name);
-		Optional<Family> debugFam = this.familyRepository.findByName(name);
-		if(debugFam.isPresent())
+		Optional<Family> familyOpt = this.familyRepository.findByName(name);
+		if(familyOpt.isPresent())
 		{
-			Family fam = debugFam.get();
-			Collection<Person> debugMembers = fam.getMembers();
-			System.out.println("Listing " + debugMembers.size() + " members in family " + fam.getName() + ":");
-			for(Person p : debugMembers)
+			Family fam = familyOpt.get();
+			Collection<Person> members = fam.getMembers();
+			System.out.println("Listing " + members.size() + " members in family " + fam.getName() + ":");
+			for(Person p : members)
 				System.out.println(p.getFirstName() + " " + p.getLastName());
-			return debugMembers;
+			return members;
 		}
 		else
 			System.out.println("No family by that name in the database.");
-		/*
-		return this.familyRepository.findByName(name).map(family -> {
-			Collection<Person> debugMembers = family.getMembers();
-			for(Person p : debugMembers)
-				System.out.println(p.getFirstName() + " " + p.getLastName());
-			return family.getMembers();
-		}).get();
-		*/
+		
 		return null;
 	}
 	

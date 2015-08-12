@@ -48,26 +48,19 @@ public class Person
 	
 	public void setFamily(Family family)
 	{
-		System.out.println("Person.setFamily() invoked");
 		if(this.family == family)
 		{
-			System.out.println("Person.setFamily(): this.family = family, returning");
 			return;
 		}
 		
 		if(this.family != null && this.family.getMembers().contains(this))
 		{
-			System.out.println("Person.setFamily(): removing from existing family " + this.family.getName());
 			this.family.removeMember(this);
-			System.out.println("Person.setFamily(): this.family.removeMember() returned");
 		}
 		this.family = family;
-		System.out.println("Person.setFamily(): this.family = " + family.getName());
 		if(this.family != null && !this.family.getMembers().contains(this))
 		{
-			System.out.println("Person.setFamily(): adding to new family " + this.family.getName());
 			this.family.addMember(this);
-			System.out.println("Person.setFamily(): this.family.addMember() returned");
 		}
 	}
 }
