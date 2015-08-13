@@ -1,0 +1,38 @@
+body
+{
+	font-family: "Verdana", sans-serif;
+}
+
+#families
+{
+	width: 50%;
+	height: 75%;
+	overflow: auto;
+	position: relative;
+	float: left;
+}
+
+#people
+{
+	width: 50%;
+	height: 75%;
+	overflow: auto;
+	position: relative;
+	float: right;
+}
+
+#familyUI
+{
+	width: 50%;
+	height: 25%;
+	position: relative;
+	float: left;
+}
+
+#peopleUI
+{
+	width: 50%;
+	height: 25%;
+	position: relative;
+	float: right;
+}

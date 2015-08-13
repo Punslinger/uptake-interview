@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>Uptake coding interview project front end</title>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="scripts/frontend.js"></script>
+<link rel="stylesheet" type="text/css" href="stylesheets/layout.css">
+</head>
+<body>
+<div id="families">
+	<h3>Families:</h3>
+	<select id="familyList" onchange="listFamilyMembers()">
+	</select>
+	<button onclick="deleteFamily()">Delete family</button>
+	<br/>
+	<h4>Family members:</h4>
+	<div id="familyMembersList">
+	</div>
+</div>
+<div id="people">
+	<h3>People:</h3>
+	<div id="peopleList">
+	</div>
+</div>
+<div id="familyUI">
+	<form action="" onsubmit="addFamily();return false;">
+		<label for="familyName">Family name:</label>
+		<input id="familyName">
+		<input type="submit" value="Add family">
+	</form>
+</div>
+<div id="peopleUI">
+	<form action="" onsubmit="addPerson();return false;">
+		<label for="firstName">First name:</label>
+		<input id="firstName"><br/>
+		<label for="lastName">Last name:</label>
+		<input id="lastName">
+		<input type="submit" value="Add person">
+	</form>
+</div>
+</body>
+</html>
